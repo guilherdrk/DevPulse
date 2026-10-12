@@ -21,9 +21,6 @@ public class ProjectService {
     public List<ProjectResponse> findAll() {
         var projects = projectRepository.findAll();
 
-        if (projects == null) {
-            return null;
-        }
         return projects.stream()
                 .map(project -> ProjectResponse.fromEntity(project)).toList();
     }

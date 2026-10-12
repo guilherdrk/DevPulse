@@ -2,6 +2,7 @@
 
 ## Contexto
 (Por que tenho 3 partes: back-end, front-end e infra?)
+- 
 
 
 ## Decisão

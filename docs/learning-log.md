@@ -13,3 +13,29 @@ Anotações
 - 65 = Java 21
 
 ddl-auto: troque para validate. Com update, o Hibernate cria e altera tabelas por conta próproa, e isso briga com o Flyway. A regra é: o Flyway manda no schema, o Hibernate só confere.
+
+
+O que muda entre git config --local, --global e --system? Qual escolher quando se usa duas contas no mesmo computador?
+
+--system: afeta todos os usuários do computador
+--global: afeta apenas o usuário atual
+--local: afeta apenas o repositório atual
+
+- O --local é o mais recomendado, pois ele é o mais seguro e o que menos causa problemas.
+
+
+1. O que é um arquivo .gitignore? Por que ele é importante?
+
+- O .gitignore é um arquivo que diz para o Git quais arquivos e diretórios devem ser ignorados pelo sistema.
+
+- Ele é importante para que o Git não rastreie arquivos desnecessários, como arquivos de configuração, arquivos de cache, arquivos de log, etc.
+
+
+Um ALTER ... TYPE de timestamp para timestamptz converte os dados que já existem. Em que fuso o Postgres vai assumir que os valores antigos estavam? (Dica: pesquise timezone do servidor.) Por que isso importa em produção, com uma tabela cheia de dados?
+
+- O timezone do servidor é UTC. Se a tabela estiver cheia de dados, o ALTER ... TYPE vai converter os dados para TIMESTAMP WITH TIME ZONE, assumindo que os valores antigos estavam em UTC. 
+
+Pesquise o que o @Transactional(readOnly = true) faz num método só de leitura. Tente responder no learning-log.
+
+- O @Transactional(readOnly = true) faz com que o método seja executado em uma transação somente leitura, o que significa que o Hibernate não vai fazer o cache dos dados
+
