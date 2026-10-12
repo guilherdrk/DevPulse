@@ -1,0 +1,21 @@
+<h2>Projetos</h2>
+
+@if(loading()){
+<p>Carregando projetos...</p>
+} @else if(error()){
+<p>Não foi possível carregar os projetos. Tente novamente mais tarde.</p>
+} @else if (projects().length === 0){
+<p>Nenhum projeto cadastrado ainda.</p>
+} @else {
+<ul>
+    @for (project of projects(); track project.id){
+    <li>
+        <strong>{{project.name}}</strong>
+        <p>{{project.description}}</p>
+        @if (project.repoUrl) {
+        <a [href]="project.repoUrl" target="_blank" rel="noopener">Ver repositório</a>
+        }
+    </li>
+    }
+</ul>
+}
