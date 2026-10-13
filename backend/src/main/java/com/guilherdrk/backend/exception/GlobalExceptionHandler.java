@@ -4,6 +4,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -25,6 +26,16 @@ public class GlobalExceptionHandler {
         problem.setProperty("errors", erros);
         return problem;
 
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    ProblemDetail handlerHttpMessageNotReadableException(HttpMessageNotReadableException ex) {
+        var problem = ProblemDetail.forStatusAndDetail(
+                HttpStatus.BAD_REQUEST, "Corpo da requisição inválido");
+        problem.setTitle("Requisição inválida");
+        var message = ex.getMostSpecificCause().getMessage();
+        problem.setProperty("error", message);
+        return problem;
     }
 
 }
