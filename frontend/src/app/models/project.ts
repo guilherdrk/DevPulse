@@ -6,3 +6,8 @@ export interface Project {
     createdAt: string;
 }
 
+export interface CreateProjectRequest {
+    name: string;
+    description: string | null;
+    repoUrl: string | null;
+}

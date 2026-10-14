@@ -26,6 +26,10 @@ export class ProjectList {
         this.error.set(true);
       },
     });
+
+  }
+  addProject(project: Project) {
+    this.projects.update(listaAtual => [project, ...listaAtual]);
   }
 
 }

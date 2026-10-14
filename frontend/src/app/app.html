@@ -1,1 +1,5 @@
-<app-project-list></app-project-list>
+<app-project-form (projectCreated)="projectList.addProject($event)">
+
+</app-project-form>
+
+<app-project-list #projectList></app-project-list>

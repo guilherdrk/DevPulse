@@ -39,3 +39,20 @@ Pesquise o que o @Transactional(readOnly = true) faz num método só de leitura.
 
 - O @Transactional(readOnly = true) faz com que o método seja executado em uma transação somente leitura, o que significa que o Hibernate não vai fazer o cache dos dados
 
+
+perguntas: 
+
+1. Por que 201 e não 200? Para que serve o header Location?
+    - O status 201 Created indica que um novo recurso foi criado com sucesso. 
+    - O header Location indica a URL do recurso criado.
+
+2. Por que validar no backend se o front já valida?
+    - O front-end pode ser contornado e o back é a ultima barreira de proteção
+
+3. O que acontece se o JSON enviado for malformado (uma virgula faltando?) qual exceção o Spring lança? (Teste com curl e leia a resposta. Fica como desafio: tratar essa também. Dica, crie uma classe "CustomExceptionHandler" e anote com @RestControllerAdvice, depois anote o método com @ExceptionHandler e retorne um ProblemDetail)
+
+    - O Spring lança uma exceção do tipo MethodArgumentNotValidException
+
+4. Um Instant.now() direto no service dificulta o teste. Como você resolveria? (Dica: o Clock que vimos no Dia 1.)
+  - Injetar uma instância de Clock e usar o método now() diretamente. Desse jeito conseguimos mockar o Clock e testar o método create() com um horário fixo.
+  

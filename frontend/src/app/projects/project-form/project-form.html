@@ -1,0 +1,27 @@
+<p>project-form works!</p>
+
+<form [formGroup]="form" (ngSubmit)='onSubmit()'>
+    <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" formControlName="name"
+            [class.error]="form.get('name')?.invalid && form.get('name')?.touched">
+    </div>
+    <div class="field">
+        <label for="description">Description</label>
+        <textarea id="description" formControlName="description"
+            [class.error]="form.get('description')?.invalid && form.get('description')?.touched"></textarea>
+
+    </div>
+    <div class="field">
+        <label for="repoUrl">Repo URL</label>
+        <input type="text" id="repoUrl" formControlName="repoUrl"
+            [class.error]="form.get('repoUrl')?.invalid && form.get('repoUrl')?.touched">
+    </div>
+
+    <div class="actions">
+        <button type="submit" [disabled]="submitting() || form.invalid">Salvar</button>
+        @if(errorMessage()){
+        <span class="error-message">{{ errorMessage() }}</span>
+        }
+    </div>
+</form>
