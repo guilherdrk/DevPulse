@@ -1,5 +1,23 @@
-<app-project-form (projectCreated)="projectList.addProject($event)">
+<div class="app-layout">
+    <header class="app-header">
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">Devpulse</span>
+            </div>
+            <div class="badge">Hub de Métricas & Projetos</div>
+        </div>
+    </header>
 
-</app-project-form>
+    <main class="main-content">
+        <div class="dashboard-grid">
+            <section class="form-section">
+                <app-project-form (projectCreated)="projectList.addProject($event)"></app-project-form>
+            </section>
 
-<app-project-list #projectList></app-project-list>
+            <section class="list-section">
+                <app-project-list #projectList></app-project-list>
+            </section>
+        </div>
+    </main>
+</div>

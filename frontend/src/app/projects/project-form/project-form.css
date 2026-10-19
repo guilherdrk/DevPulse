@@ -1,0 +1,100 @@
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: 1.5rem;
+    backdrop-filter: blur(12px);
+}
+
+.card-title {
+    font-size: 1.12rem;
+    font-weight: 600;
+}
+
+.card-subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    margin-bottom: 1.25rem;
+}
+
+label {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+input,
+textarea {
+    background: var(--bg-input);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 0.625rem 0.75rem;
+    color: var(--text-primary);
+    font: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+button[type='submit'] {
+    background: var(--accent-gradient);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-image 0.2s, transform 0.15s, box-shadow 0.15s;
+}
+
+button[type='submit']:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 34px -10px rgba(99, 102, 241, 0.35);
+}
+
+button[type='submit']:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+button[type='submit']:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+input.error,
+textarea.error {
+    border-color: var(--color-error);
+}
+
+.error-message {
+    color: var(--color-error);
+    background: var(--color-error-bg);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-md);
+    font-size: 0.8125rem;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+    outline: none;
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
