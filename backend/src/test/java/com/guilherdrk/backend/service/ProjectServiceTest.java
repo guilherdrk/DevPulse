@@ -12,6 +12,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.Optional;
+import com.guilherdrk.backend.exception.ProjectNotFoundException;
 
 import com.guilherdrk.backend.entity.Project;
 import com.guilherdrk.backend.repository.ProjectRepository;
@@ -68,5 +70,12 @@ class ProjectServiceTest {
         assertNotNull(result);
         assertTrue(result.isEmpty());
         verify(projectRepository, times(1)).findAll();
+    }
+
+    @Test
+    @DisplayName("Deve lançar ProjectNotFoundException quando o projeto não for encontrado")
+    void shouldThrowExceptionWhenProjectNotFound() {
+        when(projectRepository.findById(99L)).thenReturn(Optional.empty());
+        assertThrows(ProjectNotFoundException.class, () -> projectService.findById(99L));
     }
 }

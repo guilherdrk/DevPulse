@@ -66,4 +66,29 @@ public class ProjectIntegrationTest extends AbstractIntegrationTest {
                 .andExpect(jsonPath("$.status").value(400))
                 .andExpect(jsonPath("$.errors.name").exists());
     }
+
+    @Test
+    @DisplayName("Deve buscar projeto por ID com sucesso")
+    void shouldGetProjectById() throws Exception {
+        // 2. QUANDO: fazemos um GET /api/v1/projects/1
+        mockMvc.perform(get("/api/v1/projects/1"))
+                // 3. ENTÃO: esperamos status 200 OK
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(1))
+                .andExpect(jsonPath("$.name").value("DevPulse"));
+
+    }
+
+    @Test
+    @DisplayName("Deve retornar 404 quando projeto não existe")
+    void shouldReturnNotFoundWhenProjectNotFound() throws Exception {
+        // 2. QUANDO: fazemos um GET /api/v1/projects/999
+        mockMvc.perform(get("/api/v1/projects/999"))
+                // 3. ENTÃO: esperamos status 404
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.title").value("Projeto não encontrado"))
+                .andExpect(jsonPath("$.status").value(404))
+                .andExpect(jsonPath("$.detail").value("Projeto não encontrado: 999"));
+    }
+
 }

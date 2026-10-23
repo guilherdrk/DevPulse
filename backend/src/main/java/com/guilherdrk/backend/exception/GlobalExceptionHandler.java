@@ -38,4 +38,12 @@ public class GlobalExceptionHandler {
         return problem;
     }
 
+    @ExceptionHandler(ProjectNotFoundException.class)
+    ProblemDetail handlerProjectNotFoundException(ProjectNotFoundException ex) {
+        var problem = ProblemDetail.forStatusAndDetail(
+                HttpStatus.NOT_FOUND, ex.getMessage());
+        problem.setTitle("Projeto não encontrado");
+        return problem;
+    }
+
 }
