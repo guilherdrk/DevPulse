@@ -68,7 +68,7 @@ describe('ProjectForm', () => {
     vi.spyOn(projectService, 'create').mockReturnValue(of(mockCreatedProject));
 
     // Espionamos a emissão do output projectCreated
-    const emitSpy = vi.spyOn(component.projectCreated, 'emit');
+    const emitSpy = vi.spyOn(component.projectSaved, 'emit');
 
     // Preenchemos o formulário com dados válidos:
     component.form.setValue({
@@ -88,4 +88,36 @@ describe('ProjectForm', () => {
     expect(emitSpy).toHaveBeenCalledWith(mockCreatedProject);
     expect(component.submitting()).toBe(false);
   });
+
+  it('should update a project', () => {
+    const mockUpdatedProject: Project = {
+      id: 1,
+      name: 'Updated Project',
+      description: 'Updated Description',
+      repoUrl: 'https://github.com/updated-repo',
+      createdAt: '2026-10-14T10:00:00Z',
+    };
+
+    vi.spyOn(projectService, 'update').mockReturnValue(of(mockUpdatedProject));
+    const emitSpy = vi.spyOn(component.projectSaved, 'emit');
+
+    component.form.setValue({
+      name: 'Updated Project',
+      description: 'Updated Description',
+      repoUrl: 'https://github.com/updated-repo',
+    });
+    fixture.componentRef.setInput("project", mockUpdatedProject);
+    component.onSubmit();
+
+    expect(projectService.update).toHaveBeenCalledWith(1, {
+      name: 'Updated Project',
+      description: 'Updated Description',
+      repoUrl: 'https://github.com/updated-repo',
+    });
+    expect(emitSpy).toHaveBeenCalledWith(mockUpdatedProject);
+    expect(component.submitting()).toBe(false);
+  });
+
+
+
 });

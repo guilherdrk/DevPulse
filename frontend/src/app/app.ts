@@ -1,6 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ProjectList } from './projects/project-list/project-list';
 import { ProjectForm } from './projects/project-form/project-form';
+import { Project } from './models/project';
 
 @Component({
   imports: [ProjectForm, ProjectList],
@@ -9,5 +10,6 @@ import { ProjectForm } from './projects/project-form/project-form';
   templateUrl: './app.html',
 })
 export class App {
+  editingProject = signal<Project | null>(null);
 
 }

@@ -23,6 +23,10 @@
 }
 
 .project-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.8rem;
     background: var(--bg-card);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
@@ -74,4 +78,28 @@
     color: var(--color-error);
     border-color: var(--color-error);
     background: rgba(239, 68, 68, 0.05);
+}
+
+button {
+    background: var(--accent-gradient);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-image 0.2s, transform 0.15s, box-shadow 0.15s;
+}
+
+button.btn-remove {
+    background: var(--color-error);
+}
+
+button.btn-edit {
+    background: var(--color-success);
+}
+
+.actions {
+    display: flex;
+    gap: 0.75rem;
 }

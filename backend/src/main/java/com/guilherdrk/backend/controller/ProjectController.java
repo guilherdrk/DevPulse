@@ -44,7 +44,7 @@ public class ProjectController {
     @PostMapping
     public ResponseEntity<ProjectResponse> create(@Valid @RequestBody CreateProjectRequest request) {
         var created = projectService.create(request);
-        var location = URI.create("/api/v1/projects" + created.id());
+        var location = URI.create("/api/v1/projects/" + created.id());
         return ResponseEntity.created(location).body(created);
     }
 

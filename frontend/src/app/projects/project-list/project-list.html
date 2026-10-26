@@ -20,7 +20,18 @@
             Ver repositório →
         </a>
         }
+        <div class="actions">
+            @if(removing() != project.id){
+            <button class="btn-remove" (click)="removeProject(project)"
+                [disabled]="removing()===project.id">Remover</button>
+            }@else{
+            <p>Removendo...</p>
+            }
+
+            <button class="btn-edit" (click)="editProject(project)">Editar</button>
+        </div>
     </li>
     }
 </ul>
+
 }

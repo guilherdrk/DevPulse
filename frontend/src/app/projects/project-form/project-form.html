@@ -25,6 +25,10 @@
             @if(errorMessage()){
             <span class="error-message">{{ errorMessage() }}</span>
             }
+
+            @if(project()){
+            <button type="button" (click)="cancelled.emit()" class="btn-cancel">Cancelar</button>
+            }
         </div>
     </form>
 </div>

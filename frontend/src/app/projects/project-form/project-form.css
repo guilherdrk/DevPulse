@@ -79,6 +79,28 @@ button[type='submit']:disabled {
     cursor: not-allowed;
 }
 
+button[type='button'] {
+    background: var(--color-error);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-image 0.2s, transform 0.15s, box-shadow 0.15s;
+}
+
+button[type='button']:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 34px -10px rgba(99, 102, 241, 0.35);
+}
+
+button[type=button]:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+
 input.error,
 textarea.error {
     border-color: var(--color-error);

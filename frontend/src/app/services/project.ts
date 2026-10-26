@@ -16,4 +16,12 @@ export class ProjectService {
     create(request: CreateProjectRequest): Observable<Project> {
         return this.http.post<Project>('/api/v1/projects', request)
     }
+
+    update(id: number, request: CreateProjectRequest): Observable<Project> {
+        return this.http.put<Project>(`/api/v1/projects/${id}`, request);
+    }
+
+    delete(id: number): Observable<void> {
+        return this.http.delete<void>(`/api/v1/projects/${id}`);
+    }
 }

@@ -12,11 +12,15 @@
     <main class="main-content">
         <div class="dashboard-grid">
             <section class="form-section">
-                <app-project-form (projectCreated)="projectList.addProject($event)"></app-project-form>
+                <app-project-form [project]="editingProject()"
+                    (projectSaved)="projectList.upsertProject($event); editingProject.set(null)"
+                    (cancelled)="editingProject.set(null)">
+                </app-project-form>
             </section>
 
             <section class="list-section">
-                <app-project-list #projectList></app-project-list>
+                <app-project-list #projectList (editRequested)="editingProject.set($event)">
+                </app-project-list>
             </section>
         </div>
     </main>
