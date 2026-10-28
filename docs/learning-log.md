@@ -56,3 +56,10 @@ perguntas:
 4. Um Instant.now() direto no service dificulta o teste. Como você resolveria? (Dica: o Clock que vimos no Dia 1.)
   - Injetar uma instância de Clock e usar o método now() diretamente. Desse jeito conseguimos mockar o Clock e testar o método create() com um horário fixo.
   
+
+
+
+por que o .dockerignore é diferente do .gitignore, mesmo se parecendo?
+
+- O .dockerignore é usado pelo Docker para ignorar arquivos e diretórios no contexto do build.
+- O .gitignore é usado pelo Git para ignorar arquivos e diretórios no repositório.
